@@ -1,4 +1,5 @@
 package gla.joose.birdsim.pieces;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
@@ -6,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Observable;
 
+import gla.joose.birdsim.Interfaces.PaintMethod;
 import gla.joose.birdsim.boards.Board;
 
 
@@ -13,6 +15,9 @@ import gla.joose.birdsim.boards.Board;
  * An abstract class that represents a piece on a board.
  */
 public abstract class Piece extends Observable {
+	
+	PaintMethod pm;
+	
     protected Board board;
     private int row = -1;
     private int column = -1;
@@ -28,7 +33,7 @@ public abstract class Piece extends Observable {
     private int speed = -1; // Negative means to use Board default
     private static final int PAUSE_MS = 50;
     private static final int FRAME_RATE = 1000 / PAUSE_MS;
-
+    float remaining = 1.0f; //fraction fo the grain remaining
     boolean isSurface;
     /**
      * Creates a Piece. The piece is not actually placed on any
@@ -38,7 +43,14 @@ public abstract class Piece extends Observable {
      */
     public Piece() {
     }
-
+    
+    public void setPaintMethod(PaintMethod PM) {
+        pm = PM;
+    }
+    
+    public float getRemaining() {
+		return remaining;
+	}
     /**
      * @return The board (if any) containing this piece.
      */

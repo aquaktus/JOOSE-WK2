@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import gla.joose.birdsim.Methods.PaintArc;
+
 /**
  * A Bird piece.
  */
@@ -16,6 +18,7 @@ public class Bird extends Piece {
      **/
     public Bird() {
     	color = Color.green;
+    	setPaintMethod(new PaintArc());
     }
     
     /**
@@ -35,7 +38,6 @@ public class Bird extends Piece {
      * @param r The rectangle in which to draw.
      */
     public void paint(Graphics g, Rectangle r) {
-        g.setColor(color);
-        g.fillArc(r.x, r.y, r.width, r.height, 50, 270);
+    	pm.paint(g, r, color);
     }
 }

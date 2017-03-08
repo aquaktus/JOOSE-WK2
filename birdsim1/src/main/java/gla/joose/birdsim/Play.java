@@ -2,10 +2,12 @@ package gla.joose.birdsim;
 
 import javax.swing.JFrame;
 
+import gla.joose.birdsim.Methods.FlockBoardFly;
+import gla.joose.birdsim.Methods.MovingForageFly;
+import gla.joose.birdsim.Methods.StaticForageFly;
 import gla.joose.birdsim.boards.Board;
-import gla.joose.birdsim.boards.FlockBoard;
-import gla.joose.birdsim.boards.MovingForageBoard;
-import gla.joose.birdsim.boards.StaticForageBoard;
+import gla.joose.birdsim.boards.FourButtonsBoard;
+import gla.joose.birdsim.boards.TwoButtonsBoard;
 
 
 /**
@@ -18,12 +20,8 @@ public class Play extends JFrame {
 	public static void main(String[] args) {
 		Play play = new Play();
 		
-//		Board forageBoard = new StaticForageBoard(50,50);
-//		forageBoard.initBoard(play);
-//		Board forageBoard = new MovingForageBoard(50,50);
-//		forageBoard.initBoard(play);
-		Board simpleBoard = new FlockBoard(50,50);
-		simpleBoard.initBoard(play);
+		Board forageBoard = new FourButtonsBoard(50,50, new MovingForageFly());
+		forageBoard.initBoard(play);
 
 	}
 

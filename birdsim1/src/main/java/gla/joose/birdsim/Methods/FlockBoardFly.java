@@ -2,17 +2,17 @@ package gla.joose.birdsim.Methods;
 
 import java.util.Random;
 
-import gla.joose.birdsim.Interfaces.flyBehaviour;
+import gla.joose.birdsim.Interfaces.FlyBehaviour;
 import gla.joose.birdsim.boards.Board;
 import gla.joose.birdsim.pieces.Bird;
 
-public class FlockBoardFly implements flyBehaviour{
+public class FlockBoardFly implements FlyBehaviour{
 	
 	public void fly(Board board){
 		
 		Bird bird = new Bird();
 		
-		Random rand = null;
+		Random rand = new Random();;
 		int randRow = rand.nextInt((board.getRows() - 3) + 1) + 0;
     	int randCol = rand.nextInt((board.getColumns() - 3) + 1) + 0;
     	

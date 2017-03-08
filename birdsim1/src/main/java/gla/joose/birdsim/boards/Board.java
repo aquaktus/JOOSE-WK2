@@ -1,5 +1,4 @@
 package gla.joose.birdsim.boards;
-import gla.joose.birdsim.Interfaces.flyBehaviour;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -43,10 +42,7 @@ public abstract class Board extends Observable implements Observer {
     protected boolean starveBirds;
     protected int noofbirds;
     protected int noofgrains;
-    
-    
-    flyBehaviour flyBehavior;
-
+    protected boolean starveBirdspressed = false;
 
     /**
      * Creates a board with the given number of rows and columns. This
@@ -120,29 +116,7 @@ public abstract class Board extends Observable implements Observer {
     }
     
     
-	public void fly(){
-		
-		Bird bird = new Bird();
-		
-		int randRow = rand.nextInt((getRows() - 3) + 1) + 0;
-    	int randCol = rand.nextInt((getColumns() - 3) + 1) + 0;
-    	
-		place(bird,randRow, randCol);
-		bird.setDraggable(false);
-		bird.setSpeed(20);
-		updateStockDisplay();
-		
-		while(!scareBirds){
-			randRow = rand.nextInt((getRows() - 3) + 1) + 0;
-        	randCol = rand.nextInt((getColumns() - 3) + 1) + 0; 
-        	bird.moveTo(randRow, randCol);
-    		bird.setSpeed(20);
-			
-		} 
-		bird.remove();
-		updateStockDisplay();
-	}
-	
+    
 	/**
      * updates the number of birds and grains on the board.
      */
@@ -610,10 +584,5 @@ public abstract class Board extends Observable implements Observer {
     public void setSelectedSquare(int[] selection) {
         selectedSquare = selection;
     }
-    
-    
-    public void setFlyBehavior(flyBehaviour fb) {
-		flyBehavior = fb;
-	}
     
 }
