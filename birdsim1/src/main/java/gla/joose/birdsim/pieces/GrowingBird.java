@@ -5,23 +5,24 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Calendar;
 
-import gla.joose.birdsim.Methods.PaintArc;
+
+import gla.joose.birdsim.Methods.PaintArcGrow;
 /**
  * A Bird piece.
  */
-public class Bird extends Piece {
+public class GrowingBird extends Piece {
     public Color color;
-    public long lastMealTime;
+    
     /**
      * Hatches a <code>Bird</code>.
      **/
     
 	// time since the bird last ate :(
+    public long lastMealTime;
     
-    
-    public Bird() {
+    public GrowingBird() {
     	color = Color.black;
-    	setPaintMethod(new PaintArc());
+    	setPaintMethod(new PaintArcGrow());
     	lastMealTime=Calendar.getInstance().getTimeInMillis();
     }
     
@@ -30,10 +31,15 @@ public class Bird extends Piece {
      * 
      * @param color The <code>Color</code> of the new piece.
      **/
-     Bird(Color color) {
+     GrowingBird(Color color) {
         this.color = color;
     }
-   
+     
+     public void changeColor(Color c){
+    	 color = c;
+    	 
+     }
+     
     
     /**
      * Draws this <code>Bird</code> on the given <code>Graphics</code>.

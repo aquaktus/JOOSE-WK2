@@ -193,6 +193,10 @@ public abstract class Piece extends Observable {
         }
         return new Rectangle(x, y, width, height);
     }
+    
+    public void setRecatngleWH() {
+    	
+    }
 
     /**
      * Returns the row that this piece is in, or -1 if this piece is not on the
