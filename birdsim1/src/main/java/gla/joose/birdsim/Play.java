@@ -22,7 +22,11 @@ public class Play extends JFrame {
 	public static void main(String[] args) {
 		Play play = new Play();
 		
-		Board forageBoard = new FourButtonsBoard(50,50, new StaticForageFly());
+		/**
+		 * Select board type and 
+		 * @param The fly behavior that applies to the chosen board
+		 */
+		Board forageBoard = new FiveButtonsBoard(50,80, new MovingForageFly());
 		forageBoard.initBoard(play);
 
 	}

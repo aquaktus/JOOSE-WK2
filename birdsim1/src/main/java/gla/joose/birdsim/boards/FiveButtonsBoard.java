@@ -1,3 +1,6 @@
+/**
+ * Added a new button to add a tree when pressed. Trees do not have specific functions
+ */
 package gla.joose.birdsim.boards;
 
 import java.awt.BorderLayout;
@@ -47,7 +50,64 @@ public class FiveButtonsBoard extends Board {
         buttonPanel = new JPanel();
         frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         
+        hatchEggButton = new JButton("hatch egg");
+        buttonPanel.add(hatchEggButton);
+        hatchEggButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	scareBirds = false;
+            	runningthread = new Thread(new Runnable(){
+					public void run() {
+						flyBehaviour.fly(FiveButtonsBoard.this);
+					}            		
+            	});
+            	runningthread.start();
+        }}); 
         
+        feedBirdButton = new JButton("feed birds");
+        buttonPanel.add(feedBirdButton);
+        feedBirdButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	starveBirds = false;
+
+            	Grain grain = new Grain();
+            	int randRow = rand.nextInt((getRows() - 3) + 1) + 0;
+            	int randCol = rand.nextInt((getColumns() - 3) + 1) + 0;
+            	place(grain,randRow, randCol);
+        		grain.setDraggable(false);
+        		
+        		updateStockDisplay();
+        }}); 
+        
+        //Add a new button to place a tree
+        treesButton = new JButton("Add a lovely tree");
+        buttonPanel.add(treesButton);
+        treesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            	Tree tree = new Tree();
+            	int randRow = rand.nextInt((getRows() - 3) + 1) + 0;
+            	int randCol = rand.nextInt((getColumns() - 3) + 1) + 0;
+            	place(tree,randRow, randCol);
+        		tree.setDraggable(false);
+        		
+        		updateStockDisplay();
+        }});
+
+        starveBirdsButton = new JButton("starve birds");
+        buttonPanel.add(starveBirdsButton);
+        starveBirdsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	starveBirds = true;
+
+        }}); 
+        
+        scareBirdsButton = new JButton("scare birds");
+        buttonPanel.add(scareBirdsButton);
+        scareBirdsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	scareBirds = true;
+
+        }}); 
         noOfBirdsLabel = new JLabel();
         noOfBirdsLabel.setText("#birds: "+0);
         buttonPanel.add(noOfBirdsLabel);

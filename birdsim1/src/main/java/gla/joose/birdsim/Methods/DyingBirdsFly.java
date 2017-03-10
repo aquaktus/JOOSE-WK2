@@ -1,3 +1,9 @@
+/**
+ * Birds flying behaviour is the same as MovingForageBird with the addition of a lifetime for birds:
+ * they will die if they do not eat within 5s
+ */
+
+
 package gla.joose.birdsim.Methods;
 
 import gla.joose.birdsim.pieces.Bird;
