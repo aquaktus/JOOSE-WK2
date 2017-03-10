@@ -24,9 +24,9 @@ public class Play extends JFrame {
 		
 		/**
 		 * Select board type and 
-		 * @param The fly behaviour that applies to the chosen board
+		 * @param The fly behavior that applies to the chosen board
 		 */
-		Board forageBoard = new FiveButtonsBoard(50,80, new DyingBirdsFly());
+		Board forageBoard = new FourButtonsBoard(50,80, new MovingForageFly());
 		forageBoard.initBoard(play);
 
 	}
